@@ -9,7 +9,8 @@ def string_ints_to_ints(my_str: LiteralString) -> LiteralString:
     """Convert integers in a string from word form to integer form and remove any non-int words.
 
     This implementation takes a sliding windows approach, successively passing over the string with
-    an increasingly large window to
+    an increasingly large window to filter out the integers. A regex approach would be faster, but
+    I'm two glasses of wine deep and I don't feel like casting spells.
 
     >>> string_ints_to_ints("one")
     '1'
