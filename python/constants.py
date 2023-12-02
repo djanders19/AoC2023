@@ -10,5 +10,5 @@ DAY_1_P2_STRING_INTS = {
     "six": "6",
     "seven": "7",
     "eight": "8",
-    "nine": "nine",
+    "nine": "9",
 }
