@@ -1,4 +1,4 @@
-DAY_1_P1_INPUT_FILE = "inputs/1/in_1.txt"
+DAY_1_P1_INPUT_FILE = "inputs/day1/in_1.txt"
 
 DAY_1_P2_STRING_INTS = {
     "zero": "0",
