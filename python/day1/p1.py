@@ -70,5 +70,5 @@ if __name__ == "__main__":
 
     doctest.testmod()
 
-    with open(constants.DAY_1_P1_INPUT_FILE, "r") as f:
+    with open(constants.DAY_1_INPUT_FILE, "r") as f:
         print(solve_lines([line.strip() for line in f.readlines()]))

@@ -2,7 +2,7 @@ from typing import LiteralString
 from operator import itemgetter
 
 from python.day1.p1 import solve_lines
-from python.constants import DAY_1_P2_STRING_INTS, DAY_1_P1_INPUT_FILE
+from python.constants import DAY_1_P2_STRING_INTS, DAY_1_INPUT_FILE
 
 
 def string_ints_to_ints(my_str: LiteralString) -> LiteralString:
@@ -57,5 +57,7 @@ if __name__ == "__main__":
 
     doctest.testmod()
 
-    with open(DAY_1_P1_INPUT_FILE, "r") as f:
-        print(solve_lines([string_ints_to_ints(line.strip()) for line in f.readlines()]))
+    with open(DAY_1_INPUT_FILE, "r") as f:
+        print(
+            solve_lines([string_ints_to_ints(line.strip()) for line in f.readlines()])
+        )

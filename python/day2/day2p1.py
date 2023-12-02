@@ -4,6 +4,8 @@ from collections import defaultdict
 from enum import Enum
 import re
 
+from python.constants import DAY_2_INPUT_FILE, DAY_2_TEST_FILE
+
 
 class CubeColor(Enum):
     BLUE = 1
@@ -99,7 +101,7 @@ if __name__ == "__main__":
     # only 12 red cubes, 13 green cubes, and 14 blue cubes
     arrangement = {CubeColor.RED: 12, CubeColor.GREEN: 13, CubeColor.BLUE: 14}
 
-    with open("inputs/day2/test_day2.txt") as f:
+    with open(DAY_2_TEST_FILE) as f:
         games = [Game.from_string(line.strip()) for line in f.readlines()]
         possible_game_nums = [
             game.game_num for game in games if game.possible(arrangement)
@@ -111,7 +113,7 @@ if __name__ == "__main__":
             f"Summed power test: {sum([power(game.min_arrangement()) for game in games])}"
         )
 
-    with open("inputs/day2/in_2.txt") as f:
+    with open(DAY_2_INPUT_FILE) as f:
         games = [Game.from_string(line.strip()) for line in f.readlines()]
         possible_game_nums = [
             game.game_num for game in games if game.possible(arrangement)
