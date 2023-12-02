@@ -1,3 +1,5 @@
+"""Could probs be simplified with an Arrangement class or NamedTuple"""
+
 from dataclasses import dataclass, field
 from typing import Dict, LiteralString, List
 from collections import defaultdict
