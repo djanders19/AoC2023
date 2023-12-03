@@ -1,4 +1,5 @@
 from typing import List, Any
+from collections import defaultdict
 
 
 def file_to_2d_grid(filepath: str) -> List[List[str]]:
@@ -110,24 +111,60 @@ def is_part_number(x, y, grid):
 def extract_part_nums(grid: List[List[str]]):
     x = 0
     part_nums: List[int] = []
+    part_num_map = defaultdict(list)
 
     while x < len(grid):
         y = 0
         while y < len(grid[0]):
             if grid[x][y].isdigit() and is_part_number(x, y, grid):
                 part_num = ""
-                while y < len(grid) and grid[x][y].isdigit():
+                part_num_idx_one = y
+                while y < len(grid[0]) and grid[x][y].isdigit():
                     part_num += grid[x][y]
                     y += 1  # Advance to end of number
                 part_nums.append(int(part_num))
+                part_num_idx_two = y
+                part_num_map[x].append((part_num_idx_one, part_num_idx_two))
             y += 1
         x += 1
-    return part_nums
+    return part_nums, part_num_map
+
+
+def get_part_nums_next_to_coord(x, y, part_num_map, grid):
+    part_nums = []
+    x_start = x - 1
+    x_end = x + 2
+    if x == 0:
+        x_start = 0
+    if x_end > len(grid):
+        x_end = x + 1
+
+    for xx in range(x_start, x_end):
+        for part_num_y_coords in part_num_map[xx]:
+            if y in range(part_num_y_coords[0] - 1, part_num_y_coords[1] + 1):
+                part_nums.append(grid[xx][part_num_y_coords[0] : part_num_y_coords[1]])
+    return [int(part_num) for part_num in part_nums]
+
+
+def get_gear_ratios(grid, part_num_map):
+    gear_ratios = []
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
+            if grid[x][y] == "*":
+                adjacent_part_nums = get_part_nums_next_to_coord(
+                    x, y, part_num_map, grid
+                )
+                if len(adjacent_part_nums) == 2:
+                    gear_ratios.append(adjacent_part_nums[0] * adjacent_part_nums[1])
+    return gear_ratios
 
 
 def main():
     grid = file_to_2d_grid("inputs/day3/day3_in.txt")
-    print(sum(extract_part_nums(grid)))
+    part_nums, part_num_map = extract_part_nums(grid)
+    print(sum(part_nums))
+
+    print(sum(get_gear_ratios(grid, part_num_map)))
 
 
 if __name__ == "__main__":
