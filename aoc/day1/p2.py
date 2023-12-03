@@ -1,8 +1,8 @@
 from typing import LiteralString
 from operator import itemgetter
 
-from python.day1.p1 import solve_lines
-from python.constants import DAY_1_P2_STRING_INTS, DAY_1_INPUT_FILE
+from aoc.day1.p1 import solve_lines
+from aoc.constants import DAY_1_P2_STRING_INTS, DAY_1_INPUT_FILE
 
 
 def string_ints_to_ints(my_str: LiteralString) -> LiteralString:
@@ -52,7 +52,7 @@ def string_ints_to_ints(my_str: LiteralString) -> LiteralString:
     return "".join([item[0] for item in to_return])
 
 
-if __name__ == "__main__":
+def main():
     import doctest
 
     doctest.testmod()

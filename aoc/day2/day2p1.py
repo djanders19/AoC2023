@@ -6,7 +6,7 @@ from collections import defaultdict
 from enum import Enum
 import re
 
-from python.constants import DAY_2_INPUT_FILE, DAY_2_TEST_FILE
+from aoc.constants import DAY_2_INPUT_FILE, DAY_2_TEST_FILE
 
 
 class CubeColor(Enum):
@@ -92,7 +92,7 @@ def power(arrangement: Dict[CubeColor, int]):
     return product
 
 
-if __name__ == "__main__":
+def main():
     round = "3 blue, 4 red; "
     round = Round.from_string(round)
     print(round)

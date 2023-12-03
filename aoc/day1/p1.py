@@ -1,5 +1,5 @@
 from typing import LiteralString, Iterable
-import python.constants as constants
+import aoc.constants as constants
 
 
 def concat_first_last_int(char_int_string: LiteralString) -> LiteralString:
@@ -65,7 +65,7 @@ def solve_lines(lines: Iterable[LiteralString]) -> int:
     return sum((int_str_to_int(concat_first_last_int(line)) for line in lines))
 
 
-if __name__ == "__main__":
+def main():
     import doctest
 
     doctest.testmod()
