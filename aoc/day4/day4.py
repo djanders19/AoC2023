@@ -39,6 +39,7 @@ def score_file(filepath: str) -> int:
         return to_return
 
 
+# Todo: cleaner stack based solution using this...
 def score_cards(filepath):
     with open(filepath) as f:
         to_return = defaultdict(int)
